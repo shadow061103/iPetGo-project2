@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="IPETGODATABASE" Class="iPetGoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=IPETGODATABASE;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="iPetGoConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AdvancedMember" Member="AdvancedMember">
+    <Type Name="AdvancedMember">
+      <Column Name="MemberId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="fServiceName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fIntro" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fMainType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fSeniority" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fNote" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fPhone" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fTeltimeWeek" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fTeltime" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fSurround" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fCountry" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fArea" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fStayPay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fLicenseHave" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="fImage" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Association Name="AdvancedMember_tSitterDetail" Member="tSitterDetail" ThisKey="MemberId" OtherKey="fSitterid" Type="tSitterDetail" />
+      <Association Name="Member_AdvancedMember" Member="Member" ThisKey="MemberId" OtherKey="MemberId" Type="Member" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Member" Member="Member">
+    <Type Name="Member">
+      <Column Name="MemberId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MemberAccount" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MemberPassword" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MemberName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="sex" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MemberEmail" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fRight" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MemberImage" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="fCheck" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Member_AdvancedMember" Member="AdvancedMember" ThisKey="MemberId" OtherKey="MemberId" Type="AdvancedMember" Cardinality="One" />
+      <Association Name="Member_tSitterDetail" Member="tSitterDetail" ThisKey="MemberId" OtherKey="MemberId" Type="tSitterDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tSitterDetail" Member="tSitterDetail">
+    <Type Name="tSitterDetail">
+      <Column Name="fId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="fSitterid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MemberId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fPetId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="fService" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="fStartDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="fEndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="fMessage" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="fEvaluation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fComment" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="fStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="AdvancedMember_tSitterDetail" Member="AdvancedMember" ThisKey="fSitterid" OtherKey="MemberId" Type="AdvancedMember" IsForeignKey="true" />
+      <Association Name="Member_tSitterDetail" Member="Member" ThisKey="MemberId" OtherKey="MemberId" Type="Member" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tSitterServiceStatus" Member="tSitterServiceStatus">
+    <Type Name="tSitterServiceStatus">
+      <Column Name="fStatus" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="fdescription" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

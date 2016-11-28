@@ -1,0 +1,29 @@
+.entityform {
+  max-width: 30%;
+  margin: 10px auto;
+}
+.engage-form__hint {
+  margin-bottom: 12px;
+}
+
+.hidden_clip {
+  clip: rect(1px, 1px, 1px, 1px);
+  margin: 0;
+  position: absolute
+}
+
+.engage-form__field__wrapper {
+  position: relative;
+}
+
+.show-hide-password {
+  position: absolute;
+  right: 10px;
+  top: 32px;
+  width: 35px;
+  text-align: center;
+}
+
+*:focus {
+  outline: 2px solid orange;
+}

@@ -1,0 +1,158 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>iPetGo</title>
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css"/>
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="css/icomoon.css"/>
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="css/flexslider.css"/>
+    <!-- Owl Carousel  -->
+ <link rel="stylesheet" href="css/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="css/owl.theme.default.min.css"/>
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <!-- Modernizr JS -->
+    <script src="js/modernizr-2.6.2.min.js"></script>
+
+    <style type="text/css">
+        .auto-style1 {
+            text-align: right;
+            width: 314px;
+        }
+  .abc {
+            background-color:#00FFFF;
+            border-radius:30px;
+            height:30px;
+        }
+        .abc:hover {
+            color: #000088;
+           background: #99FFFF;
+           text-decoration: none;
+        }
+         .abc:hover::after {
+           display: none;
+          
+        }
+    
+    </style>
+
+
+    <link href="css/app.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body onload="init()">
+
+    <div id="fh5co-page">
+        <header id="fh5co-header" role="banner">
+            <div class="container">
+                <div class="header-inner">
+                    <h1><a href="MemberIndex.aspx">iPetGo</a></h1>
+
+                    <nav role="navigation">
+                        <ul>
+                            <li><a href="RegisterPetSitter.aspx">保母招募</a></li>
+                            <li><a href="News.aspx">寵物資訊版</a></li>
+                            <li><a href="IGtheme.aspx">PetStories</a></li>
+                             <li><a href="petSisterInfo.aspx">保母列表</a></li>
+                            <li><a href="PetSearchInfo.aspx">寵物協尋</a></li>
+                            <li><a href="Petshopmall.aspx">寵物商城</a></li>
+                            <%--                            <li><a href="PetStore.html">會員中心</a></li>
+                            <li><a href='Logout.aspx'>登出</a></li>--%>
+
+                            <li role="presentation" class="dropdown">
+                                <a id="drop5" href="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">會員中心
+                                <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="drop5">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="MemberProfile.aspx">會員基本資料維護</a></li>
+                                            <%
+                                         if (Session[Dictionary.SK_right] == null)
+                                             Response.Redirect("index.aspx");
+
+                                        int right = (int)Session[Dictionary.SK_right];
+                                        if (right == 4)
+                                        {
+                                         %>
+
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="PetSisterProfile.aspx">保母資料維護</a></li>
+                                    <%} %>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="MembersOrder.aspx">我的購物清單</a></li>
+                            
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="MemberPetList.aspx">我的毛小孩</a></li>
+                                   <!--判斷權限 以決定顯示出的會員中心-->
+                                     <%
+                                        
+
+                                         
+                                         if (right == 3)
+                                         {
+                                            %>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="mySisterService.aspx">我的接待家庭</a></li>
+                                            <%
+                                                }
+                                                else if(right ==4){%>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="myService.aspx">我的服務預約</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="mySisterService.aspx">我的接待家庭</a></li>
+                                    <%
+
+                                                }
+
+                                         %>
+                                     <!--判斷權限 以決定顯示出的會員中心-->
+
+                                    
+  
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="Logout.aspx">登出</a></li>
+                                </ul>
+                            </li>
+                            <li class="abc">
+                                <a href="basketCart.aspx">結帳
+                                   <img src="../images/cart.png" />
+                                 </a></li>
+
+                        </ul>
+
+                    </nav>
+
+
+                </div>
+            </div>
+        </header>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        </asp:ContentPlaceHolder>
+
+
+    </div>
+
+    <!-- jQuery -->
+    <%--<script src="js/jquery.min.js"></script>--%>
+
+    <!-- jQuery Easing -->
+    <script src="js/jquery.easing.1.3.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Waypoints -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <!-- Flexslider -->
+    <script src="js/jquery.flexslider-min.js"></script>
+    <!-- Stellar -->
+   <%-- <script src="js/jquery.stellar.min.js"></script>--%>
+      <!-- Owl Carousel -->
+    <script src="js/owl.carousel.min.js"></script>
+    <!-- MAIN JS -->
+ <script src="js/main.js"></script>
+
+</body>
+</html>
